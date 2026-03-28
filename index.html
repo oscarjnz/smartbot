@@ -12,7 +12,6 @@
       --bg-void:     #050810;
       --bg-deep:     #080d1a;
       --bg-card:     #0d1527;
-      --bg-glass:    rgba(13, 21, 39, 0.7);
       --accent-cyan: #00d4ff;
       --accent-blue: #0066ff;
       --accent-glow: rgba(0, 212, 255, 0.15);
@@ -21,14 +20,12 @@
       --text-secondary: #7a8ab0;
       --text-muted:     #3d4f72;
       --border:         rgba(0, 212, 255, 0.12);
-      --border-hover:   rgba(0, 212, 255, 0.4);
       --font-display: 'Syne', sans-serif;
       --font-mono:    'DM Mono', monospace;
       --font-body:    'DM Sans', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -39,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── NOISE OVERLAY ─── */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -47,7 +43,6 @@
       pointer-events: none; z-index: 0; opacity: 0.4;
     }
 
-    /* ─── GRID BACKGROUND ─── */
     .grid-bg {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
@@ -57,7 +52,6 @@
       mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
     }
 
-    /* ─── RADIAL GLOW ─── */
     .radial-glow {
       position: fixed; top: -20vh; left: 50%;
       transform: translateX(-50%);
@@ -70,9 +64,8 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 6vw;
-      height: 64px;
-      background: rgba(5, 8, 16, 0.8);
+      padding: 0 6vw; height: 64px;
+      background: rgba(5, 8, 16, 0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -81,15 +74,13 @@
       display: flex; align-items: center; gap: 10px;
       font-family: var(--font-display);
       font-weight: 800; font-size: 1.2rem;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
+      letter-spacing: -0.02em; color: var(--text-primary);
       text-decoration: none;
     }
 
     .logo-dot {
       width: 8px; height: 8px;
-      background: var(--accent-cyan);
-      border-radius: 50%;
+      background: var(--accent-cyan); border-radius: 50%;
       box-shadow: 0 0 10px var(--accent-cyan);
       animation: pulse 2s ease-in-out infinite;
     }
@@ -100,25 +91,19 @@
     }
 
     .nav-links {
-      display: flex; align-items: center; gap: 32px;
-      list-style: none;
+      display: flex; align-items: center; gap: 32px; list-style: none;
     }
 
     .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.78rem; font-weight: 400;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.78rem;
+      color: var(--text-secondary); text-decoration: none;
+      letter-spacing: 0.05em; text-transform: uppercase;
       transition: color 0.2s;
     }
 
     .nav-links a:hover { color: var(--accent-cyan); }
 
     .nav-cta {
-      font-family: var(--font-mono);
-      font-size: 0.75rem; font-weight: 500;
       color: var(--accent-cyan) !important;
       border: 1px solid var(--accent-line);
       padding: 6px 16px; border-radius: 4px;
@@ -136,18 +121,15 @@
       min-height: 100vh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 6vw 80px;
+      text-align: center; padding: 120px 6vw 80px;
     }
 
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400;
+      font-family: var(--font-mono); font-size: 0.72rem;
       color: var(--accent-cyan); letter-spacing: 0.12em; text-transform: uppercase;
-      border: 1px solid var(--accent-line);
-      padding: 6px 16px; border-radius: 100px;
-      background: var(--accent-glow);
-      margin-bottom: 32px;
+      border: 1px solid var(--accent-line); padding: 6px 16px; border-radius: 100px;
+      background: var(--accent-glow); margin-bottom: 32px;
       animation: fadeUp 0.8s ease both;
     }
 
@@ -160,11 +142,8 @@
     .hero-title {
       font-family: var(--font-display);
       font-size: clamp(3.5rem, 9vw, 7.5rem);
-      font-weight: 800;
-      line-height: 0.93;
-      letter-spacing: -0.04em;
-      color: var(--text-primary);
-      margin-bottom: 12px;
+      font-weight: 800; line-height: 0.93; letter-spacing: -0.04em;
+      color: var(--text-primary); margin-bottom: 12px;
       animation: fadeUp 0.8s 0.1s ease both;
     }
 
@@ -174,35 +153,30 @@
     }
 
     .hero-subtitle-line {
-      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 300;
-      color: var(--accent-cyan); letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeUp 0.8s 0.2s ease both;
+      font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--accent-cyan); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 28px; animation: fadeUp 0.8s 0.2s ease both;
     }
 
     .hero-desc {
-      max-width: 560px;
-      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 48px;
+      max-width: 560px; font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+      color: var(--text-secondary); margin-bottom: 48px;
       animation: fadeUp 0.8s 0.3s ease both;
     }
 
     .hero-actions {
-      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center;
+      display: flex; gap: 16px; align-items: center;
+      flex-wrap: wrap; justify-content: center;
       animation: fadeUp 0.8s 0.4s ease both;
     }
 
     .btn-primary {
       font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
       letter-spacing: 0.05em; text-transform: uppercase;
-      color: var(--bg-void);
-      background: var(--accent-cyan);
+      color: var(--bg-void); background: var(--accent-cyan);
       border: none; padding: 14px 32px; border-radius: 4px;
       cursor: pointer; text-decoration: none;
-      transition: box-shadow 0.25s, transform 0.2s;
-      display: inline-block;
+      transition: box-shadow 0.25s, transform 0.2s; display: inline-block;
     }
 
     .btn-primary:hover {
@@ -211,14 +185,12 @@
     }
 
     .btn-ghost {
-      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 400;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      color: var(--text-secondary);
-      background: transparent;
+      font-family: var(--font-mono); font-size: 0.82rem;
+      color: var(--text-secondary); background: transparent;
       border: 1px solid var(--text-muted); padding: 14px 32px; border-radius: 4px;
       cursor: pointer; text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
-      display: inline-block;
+      transition: color 0.2s, border-color 0.2s; display: inline-block;
+      letter-spacing: 0.05em; text-transform: uppercase;
     }
 
     .btn-ghost:hover { color: var(--text-primary); border-color: var(--text-secondary); }
@@ -226,18 +198,14 @@
     /* ─── STATS BAR ─── */
     .stats-bar {
       position: relative; z-index: 1;
-      display: flex; justify-content: center; gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-card);
-      overflow: hidden;
+      display: flex; justify-content: center;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg-card); overflow: hidden;
     }
 
     .stat-item {
-      flex: 1; max-width: 280px;
-      padding: 28px 32px;
-      border-right: 1px solid var(--border);
-      text-align: center;
+      flex: 1; max-width: 280px; padding: 28px 32px;
+      border-right: 1px solid var(--border); text-align: center;
       transition: background 0.3s;
     }
 
@@ -245,10 +213,8 @@
     .stat-item:hover { background: var(--accent-glow); }
 
     .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.4rem; font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--accent-cyan);
+      font-family: var(--font-display); font-size: 2.4rem;
+      font-weight: 800; letter-spacing: -0.04em; color: var(--accent-cyan);
     }
 
     .stat-label {
@@ -257,10 +223,9 @@
       text-transform: uppercase; margin-top: 4px;
     }
 
-    /* ─── FEATURES ─── */
+    /* ─── SECTIONS ─── */
     .section {
-      position: relative; z-index: 1;
-      padding: 100px 6vw;
+      position: relative; z-index: 1; padding: 100px 6vw;
     }
 
     .section-eyebrow {
@@ -280,21 +245,17 @@
       color: var(--text-secondary); max-width: 480px; margin-bottom: 60px;
     }
 
+    /* ─── FEATURES GRID ─── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 1px; border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
     }
 
     .feature-card {
-      background: var(--bg-card);
-      padding: 36px 32px;
-      transition: background 0.3s;
-      position: relative;
-      overflow: hidden;
+      background: var(--bg-card); padding: 36px 32px;
+      transition: background 0.3s; position: relative; overflow: hidden;
     }
 
     .feature-card::before {
@@ -310,8 +271,7 @@
     .feature-icon {
       width: 40px; height: 40px; margin-bottom: 20px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 1px solid var(--border); border-radius: 8px;
       background: var(--accent-glow);
     }
 
@@ -323,16 +283,13 @@
     }
 
     .feature-desc {
-      font-size: 0.88rem; line-height: 1.65;
-      color: var(--text-secondary); font-weight: 300;
+      font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary); font-weight: 300;
     }
 
     /* ─── BRANDS ─── */
     .brands-section {
-      position: relative; z-index: 1;
-      padding: 60px 6vw;
-      text-align: center;
-      border-top: 1px solid var(--border);
+      position: relative; z-index: 1; padding: 60px 6vw;
+      text-align: center; border-top: 1px solid var(--border);
     }
 
     .brands-label {
@@ -343,55 +300,42 @@
 
     .brands-list {
       display: flex; flex-wrap: wrap;
-      justify-content: center; align-items: center;
-      gap: 12px;
+      justify-content: center; align-items: center; gap: 12px;
     }
 
     .brand-tag {
       font-family: var(--font-mono); font-size: 0.8rem;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 8px 20px; border-radius: 4px;
-      letter-spacing: 0.08em;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-      cursor: default;
+      color: var(--text-muted); border: 1px solid var(--border);
+      padding: 8px 20px; border-radius: 4px; letter-spacing: 0.08em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s; cursor: default;
     }
 
     .brand-tag:hover {
-      color: var(--accent-cyan);
-      border-color: var(--accent-line);
+      color: var(--accent-cyan); border-color: var(--accent-line);
       background: var(--accent-glow);
     }
 
-    /* ─── CHATBOT SECTION ─── */
+    /* ─── CHAT SECTION — full redesign for floating widget ─── */
     .chat-section {
       position: relative; z-index: 1;
-      padding: 100px 6vw;
-      border-top: 1px solid var(--border);
+      padding: 100px 6vw; border-top: 1px solid var(--border);
     }
 
-    .chat-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
+    .chat-inner {
       max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
-
-    .chat-info { padding-top: 20px; }
 
     .chat-status {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-mono); font-size: 0.72rem;
       color: #00ff88; letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .status-dot {
-      width: 6px; height: 6px; background: #00ff88;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #00ff88;
-      animation: pulse-green 2s ease infinite;
+      width: 6px; height: 6px; background: #00ff88; border-radius: 50%;
+      box-shadow: 0 0 8px #00ff88; animation: pulse-green 2s ease infinite;
     }
 
     @keyframes pulse-green {
@@ -400,23 +344,35 @@
     }
 
     .chat-headline {
-      font-family: var(--font-display); font-size: 2.4rem;
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-      margin-bottom: 16px;
+      font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px;
     }
 
-    .chat-headline em {
-      font-style: normal; color: var(--accent-cyan);
-    }
+    .chat-headline em { font-style: normal; color: var(--accent-cyan); }
 
     .chat-subtext {
       font-size: 0.95rem; font-weight: 300; line-height: 1.7;
-      color: var(--text-secondary); margin-bottom: 40px;
+      color: var(--text-secondary); margin-bottom: 36px;
     }
 
-    .chat-hints {
-      display: flex; flex-direction: column; gap: 10px;
+    /* The launch button that opens Watson's floating panel */
+    .chat-launch-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--bg-void); background: var(--accent-cyan);
+      border: none; padding: 16px 36px; border-radius: 4px; cursor: pointer;
+      transition: box-shadow 0.25s, transform 0.2s; margin-bottom: 32px;
     }
+
+    .chat-launch-btn:hover {
+      box-shadow: 0 0 30px rgba(0,212,255,0.5), 0 0 60px rgba(0,212,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .chat-launch-btn svg { width: 18px; height: 18px; stroke: var(--bg-void); fill: none; stroke-width: 2; }
+
+    .chat-hints { display: flex; flex-direction: column; gap: 10px; }
 
     .hint-item {
       display: flex; align-items: flex-start; gap: 12px;
@@ -424,75 +380,117 @@
       color: var(--text-muted); line-height: 1.5;
     }
 
-    .hint-arrow {
-      color: var(--accent-cyan); flex-shrink: 0; margin-top: 1px;
-    }
+    .hint-arrow { color: var(--accent-cyan); flex-shrink: 0; margin-top: 1px; }
 
-    /* ─── CHAT EMBED WRAPPER ─── */
-    .chat-embed-wrapper {
-      position: relative;
-      height: 680px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
+    /* Right side: visual terminal-style preview */
+    .chat-preview {
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
       background: var(--bg-card);
-      box-shadow: 0 0 60px rgba(0, 100, 255, 0.1), 0 0 120px rgba(0,0,0,0.6);
+      box-shadow: 0 0 60px rgba(0,100,255,0.1), 0 0 120px rgba(0,0,0,0.6);
+      position: relative;
     }
 
-    .chat-embed-wrapper::before {
+    .chat-preview::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 10;
+      position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
       background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 30%, var(--accent-blue) 70%, transparent 100%);
     }
 
-    .chat-embed-header {
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 48px; z-index: 5;
-      background: var(--bg-deep);
+    .preview-header {
+      background: var(--bg-deep); padding: 14px 18px;
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; padding: 0 16px; gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
 
-    .embed-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .embed-dot.red   { background: #ff5f57; }
-    .embed-dot.yellow{ background: #febc2e; }
-    .embed-dot.green { background: #28c840; }
+    .p-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .p-dot.r { background: #ff5f57; }
+    .p-dot.y { background: #febc2e; }
+    .p-dot.g { background: #28c840; }
 
-    .embed-label {
+    .preview-label {
       font-family: var(--font-mono); font-size: 0.7rem;
       color: var(--text-muted); margin-left: auto; letter-spacing: 0.1em;
     }
 
-    .chat-frame {
-      position: absolute; top: 48px; left: 0; right: 0; bottom: 0;
-      display: flex; flex-direction: column;
+    .preview-body { padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+    /* Simulated chat bubbles as visual decoration */
+    .bubble {
+      display: flex; gap: 10px; align-items: flex-start;
     }
 
-    #root {
-      width: 100%;
-      flex: 1;
-      min-height: 0;
-      overflow: hidden;
+    .bubble.bot { flex-direction: row; }
+    .bubble.user { flex-direction: row-reverse; }
+
+    .bubble-avatar {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600;
     }
 
-    /* Fuerza al iframe/contenedor interno de Watson a ocupar todo el espacio */
-    #root > * {
-      width: 100% !important;
-      height: 100% !important;
+    .bubble.bot .bubble-avatar {
+      background: var(--accent-glow); border: 1px solid var(--accent-line);
+      color: var(--accent-cyan);
     }
+
+    .bubble.user .bubble-avatar {
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .bubble-text {
+      font-size: 0.82rem; line-height: 1.55; font-weight: 300;
+      padding: 10px 14px; border-radius: 8px; max-width: 80%;
+    }
+
+    .bubble.bot .bubble-text {
+      background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.1);
+      color: var(--text-secondary); border-top-left-radius: 2px;
+    }
+
+    .bubble.user .bubble-text {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      color: var(--text-secondary); border-top-right-radius: 2px; text-align: right;
+    }
+
+    .preview-input-row {
+      margin: 0 24px 20px;
+      display: flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 10px 14px; background: var(--bg-deep);
+    }
+
+    .preview-input-text {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--text-muted); flex: 1; letter-spacing: 0.02em;
+    }
+
+    .preview-send {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent-glow); border: 1px solid var(--accent-line);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .preview-send svg { width: 12px; height: 12px; stroke: var(--accent-cyan); fill: none; stroke-width: 2; }
+
+    .open-badge {
+      margin: 0 24px 24px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--text-muted); letter-spacing: 0.08em;
+    }
+
+    .open-badge-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 6px #00ff88; }
 
     /* ─── HOW IT WORKS ─── */
     .how-section {
-      position: relative; z-index: 1;
-      padding: 100px 6vw;
+      position: relative; z-index: 1; padding: 100px 6vw;
       border-top: 1px solid var(--border);
-      max-width: 1200px; margin: 0 auto;
     }
 
     .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px; margin-top: 60px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px; margin-top: 60px; max-width: 1200px;
     }
 
     .step-item { position: relative; }
@@ -500,8 +498,7 @@
     .step-num {
       font-family: var(--font-display); font-size: 4rem;
       font-weight: 800; color: var(--text-muted);
-      opacity: 0.3; line-height: 1; margin-bottom: 16px;
-      letter-spacing: -0.05em;
+      opacity: 0.3; line-height: 1; margin-bottom: 16px; letter-spacing: -0.05em;
     }
 
     .step-name {
@@ -510,8 +507,7 @@
     }
 
     .step-desc {
-      font-size: 0.875rem; line-height: 1.65;
-      color: var(--text-secondary); font-weight: 300;
+      font-size: 0.875rem; line-height: 1.65; color: var(--text-secondary); font-weight: 300;
     }
 
     .step-connector {
@@ -523,16 +519,14 @@
     /* ─── FOOTER ─── */
     footer {
       position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 48px 6vw;
+      border-top: 1px solid var(--border); padding: 48px 6vw;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 24px;
     }
 
     .footer-logo {
       font-family: var(--font-display); font-weight: 800;
-      font-size: 1rem; letter-spacing: -0.02em;
-      color: var(--text-secondary);
+      font-size: 1rem; letter-spacing: -0.02em; color: var(--text-secondary);
       display: flex; align-items: center; gap: 8px;
     }
 
@@ -541,15 +535,12 @@
       color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    .footer-links {
-      display: flex; gap: 24px; list-style: none;
-    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
 
     .footer-links a {
       font-family: var(--font-mono); font-size: 0.72rem;
       color: var(--text-muted); text-decoration: none;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      transition: color 0.2s;
+      letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s;
     }
 
     .footer-links a:hover { color: var(--accent-cyan); }
@@ -560,9 +551,7 @@
       color: var(--text-muted); letter-spacing: 0.08em;
     }
 
-    .ibm-badge span {
-      font-weight: 700; color: var(--accent-blue);
-    }
+    .ibm-badge span { font-weight: 700; color: var(--accent-blue); }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
@@ -576,10 +565,18 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ─── WATSON FLOATING BUTTON OVERRIDE ─── */
+    /* Force Watson's floating button to match the site's cyan theme */
+    [class*="WatsonAssistantChatHost"] button,
+    .WACLauncher__ButtonContainer button,
+    #WACLauncher__Button {
+      background: var(--accent-cyan) !important;
+      box-shadow: 0 0 20px rgba(0,212,255,0.4) !important;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .chat-layout { grid-template-columns: 1fr; gap: 40px; }
-      .chat-embed-wrapper { height: 520px; }
+      .chat-inner { grid-template-columns: 1fr; gap: 48px; }
       .stat-item { padding: 20px 16px; }
       .stat-num { font-size: 1.8rem; }
       .nav-links { display: none; }
@@ -598,7 +595,7 @@
   <div class="grid-bg"></div>
   <div class="radial-glow"></div>
 
-  <!-- ─── NAV ─── -->
+  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
       <div class="logo-dot"></div>
@@ -612,7 +609,7 @@
     </ul>
   </nav>
 
-  <!-- ─── HERO ─── -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
@@ -622,7 +619,7 @@
     <p class="hero-subtitle-line">Conectividad inteligente para tu Smart TV</p>
     <p class="hero-desc">
       Diagnóstico preciso y resolución paso a paso para todos los problemas
-      de conexión a Internet en tu televisor inteligente. Sin esperas, sin tecnicismos innecesarios.
+      de conexión a Internet en tu televisor inteligente.
     </p>
     <div class="hero-actions">
       <a href="#chatbot" class="btn-primary">Iniciar diagnóstico</a>
@@ -630,7 +627,7 @@
     </div>
   </section>
 
-  <!-- ─── STATS ─── -->
+  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item reveal">
       <div class="stat-num">8</div>
@@ -650,7 +647,7 @@
     </div>
   </div>
 
-  <!-- ─── FEATURES ─── -->
+  <!-- FEATURES -->
   <section class="section" id="funciones">
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-eyebrow">Capacidades</p>
@@ -658,13 +655,12 @@
       <p class="section-desc">Desde un simple reinicio hasta configuración DNS manual — SmartBot cubre cada escenario.</p>
 
       <div class="features-grid">
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
           </div>
           <div class="feature-name">Conectividad WiFi</div>
-          <div class="feature-desc">Diagnóstico de señal, contraseña, selección de banda 2.4GHz vs 5GHz, y compatibilidad con tu router.</div>
+          <div class="feature-desc">Diagnóstico de señal, contraseña, selección de banda 2.4GHz vs 5GHz y compatibilidad con tu router.</div>
         </div>
 
         <div class="feature-card reveal">
@@ -688,7 +684,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <div class="feature-name">DNS & IP manual</div>
-          <div class="feature-desc">Configuración de DNS de Google (8.8.8.8) y Cloudflare (1.1.1.1) cuando hay errores de resolución de nombres.</div>
+          <div class="feature-desc">Configuración de DNS Google (8.8.8.8) y Cloudflare (1.1.1.1) cuando hay errores de resolución de nombres.</div>
         </div>
 
         <div class="feature-card reveal">
@@ -704,14 +700,13 @@
             <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <div class="feature-name">Restauración de fábrica</div>
-          <div class="feature-desc">Último recurso guiado por marca con advertencia previa de pérdida de datos y confirmación de intención.</div>
+          <div class="feature-desc">Último recurso guiado por marca con advertencia previa y confirmación antes de borrar configuraciones.</div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ─── BRANDS ─── -->
+  <!-- BRANDS -->
   <div class="brands-section reveal">
     <p class="brands-label">Marcas compatibles</p>
     <div class="brands-list">
@@ -726,18 +721,25 @@
     </div>
   </div>
 
-  <!-- ─── CHATBOT SECTION ─── -->
+  <!-- CHATBOT SECTION -->
   <section class="chat-section" id="chatbot">
-    <div class="chat-layout">
-      <div class="chat-info reveal">
+    <div class="chat-inner">
+
+      <!-- Left: info + CTA -->
+      <div class="reveal">
         <div class="chat-status">
           <div class="status-dot"></div>
           Asistente en línea
         </div>
-        <h2 class="chat-headline">Habla con<br /><em>SmartBot</em><br />ahora mismo.</h2>
+        <h2 class="chat-headline">Habla con<br /><em>ConectaTV</em><br />ahora mismo.</h2>
         <p class="chat-subtext">
-          Describe tu problema de conectividad y el asistente te guiará hacia la solución de forma precisa, sin rodeos.
+          Describe tu problema de conectividad. El asistente te entrega pasos numerados
+          específicos para tu marca de TV, sin rodeos.
         </p>
+        <button class="chat-launch-btn" id="openChatBtn">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Abrir asistente
+        </button>
         <div class="chat-hints">
           <div class="hint-item">
             <span class="hint-arrow">→</span>
@@ -758,60 +760,91 @@
         </div>
       </div>
 
-      <div class="chat-embed-wrapper reveal">
-        <div class="chat-embed-header">
-          <div class="embed-dot red"></div>
-          <div class="embed-dot yellow"></div>
-          <div class="embed-dot green"></div>
-          <span class="embed-label">SmartBot · IBM Watson Orchestrate</span>
+      <!-- Right: decorative chat preview (visual only) -->
+      <div class="chat-preview reveal">
+        <div class="preview-header">
+          <div class="p-dot r"></div>
+          <div class="p-dot y"></div>
+          <div class="p-dot g"></div>
+          <span class="preview-label">ConectaTV · IBM Watson Orchestrate</span>
         </div>
-        <div class="chat-frame">
-          <div id="root"></div>
+        <div class="preview-body">
+          <div class="bubble bot">
+            <div class="bubble-avatar">AI</div>
+            <div class="bubble-text">¿Tu Smart TV no conecta a Internet? Describe el problema e indícame la marca del TV.</div>
+          </div>
+          <div class="bubble user">
+            <div class="bubble-avatar">TÚ</div>
+            <div class="bubble-text">Mi Samsung no detecta ninguna red WiFi.</div>
+          </div>
+          <div class="bubble bot">
+            <div class="bubble-avatar">AI</div>
+            <div class="bubble-text">Sigue estos pasos:<br/>1. Presiona <strong>Inicio</strong> → Configuración → General → Red.<br/>2. Selecciona <strong>Restablecer red</strong> y confirma.</div>
+          </div>
+          <div class="bubble user">
+            <div class="bubble-avatar">TÚ</div>
+            <div class="bubble-text">Ya lo hice, sigue sin detectar redes.</div>
+          </div>
+          <div class="bubble bot">
+            <div class="bubble-avatar">AI</div>
+            <div class="bubble-text">Verifica que el router emita en banda 2.4GHz. Los Samsung anteriores a 2019 no detectan 5GHz.</div>
+          </div>
+        </div>
+        <div class="preview-input-row">
+          <span class="preview-input-text">Escribe tu problema aquí…</span>
+          <div class="preview-send">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+        </div>
+        <div class="open-badge">
+          <div class="open-badge-dot"></div>
+          Haz clic en "Abrir asistente" para iniciar la sesión real
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- ─── HOW IT WORKS ─── -->
+  <!-- HOW IT WORKS -->
   <section class="how-section" id="como-funciona">
-    <p class="section-eyebrow">Proceso</p>
-    <h2 class="section-title">Cómo funciona el diagnóstico</h2>
-
-    <div class="steps-grid">
-      <div class="step-item reveal">
-        <div class="step-num">01</div>
-        <div class="step-name">Describe el problema</div>
-        <div class="step-desc">Escribe lo que está pasando con tu TV en lenguaje natural. No necesitas usar términos técnicos.</div>
-        <div class="step-connector"></div>
-      </div>
-      <div class="step-item reveal">
-        <div class="step-num">02</div>
-        <div class="step-name">Confirma tu marca</div>
-        <div class="step-desc">El asistente identifica el fabricante de tu TV para entregar pasos exactos para tu modelo.</div>
-        <div class="step-connector"></div>
-      </div>
-      <div class="step-item reveal">
-        <div class="step-num">03</div>
-        <div class="step-name">Diagnóstico guiado</div>
-        <div class="step-desc">Recibes instrucciones numeradas, una a la vez, comenzando por las causas más comunes.</div>
-        <div class="step-connector"></div>
-      </div>
-      <div class="step-item reveal">
-        <div class="step-num">04</div>
-        <div class="step-name">Resolución verificada</div>
-        <div class="step-desc">Si un paso no resuelve el problema, el asistente escala al siguiente nivel de diagnóstico.</div>
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="section-eyebrow">Proceso</p>
+      <h2 class="section-title">Cómo funciona el diagnóstico</h2>
+      <div class="steps-grid">
+        <div class="step-item reveal">
+          <div class="step-num">01</div>
+          <div class="step-name">Describe el problema</div>
+          <div class="step-desc">Escribe lo que está pasando con tu TV en lenguaje natural. No necesitas términos técnicos.</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">02</div>
+          <div class="step-name">Confirma tu marca</div>
+          <div class="step-desc">El asistente identifica el fabricante de tu TV para entregar pasos exactos para tu modelo.</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">03</div>
+          <div class="step-name">Diagnóstico guiado</div>
+          <div class="step-desc">Recibes instrucciones numeradas, una a la vez, comenzando por las causas más comunes.</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">04</div>
+          <div class="step-name">Resolución verificada</div>
+          <div class="step-desc">Si un paso no resuelve el problema, el asistente escala al siguiente nivel de diagnóstico.</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <div class="logo-dot" style="width:6px;height:6px;"></div>
       SmartBot
     </div>
-    <p class="footer-copy">© 2026 SmartBot. Actividad 12 - Grupo 2 - TI3314-01-2026-2-INTELIGENCIA ARTIFICIAL</p>
-    <p class="footer-copy">Developed by: Oscar, Pedribel, Leandro & Samuel</p>
+    <p class="footer-copy">© 2026 SmartBot · Actividad académica — IA aplicada.</p>
     <ul class="footer-links">
       <li><a href="#funciones">Funciones</a></li>
       <li><a href="#chatbot">Asistente</a></li>
@@ -820,7 +853,7 @@
     <div class="ibm-badge">Motor: <span>IBM Watson</span> Orchestrate</div>
   </footer>
 
-  <!-- ─── IBM WATSON EMBED ─── -->
+  <!-- IBM WATSON ORCHESTRATE EMBED -->
   <script>
     window.wxOConfiguration = {
       orchestrationID: "20260328-2035-2343-7054-0514016fe124_20260328-2036-4637-30d0-2b12e1ad24ca",
@@ -830,6 +863,7 @@
         agentId: "80f08c96-d8f0-4b8c-9dc0-ab41fa653db8",
       }
     };
+
     setTimeout(function () {
       const script = document.createElement('script');
       script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
@@ -838,9 +872,24 @@
       });
       document.head.appendChild(script);
     }, 0);
+
+    // Button click: trigger Watson's floating chat to open
+    document.getElementById('openChatBtn').addEventListener('click', function () {
+      // Watson Orchestrate exposes a global to open the panel
+      // Try multiple known API entry points for different Watson embed versions
+      if (window.wxoLoader && typeof window.wxoLoader.openChat === 'function') {
+        window.wxoLoader.openChat();
+      } else if (window.WatsonAssistantChatInstance && typeof window.WatsonAssistantChatInstance.open === 'function') {
+        window.WatsonAssistantChatInstance.open();
+      } else {
+        // Fallback: find and click Watson's own floating button
+        const btn = document.querySelector('[class*="WACLauncher"] button, #WACLauncher__Button, [aria-label*="chat" i], [aria-label*="asistente" i]');
+        if (btn) btn.click();
+      }
+    });
   </script>
 
-  <!-- ─── SCROLL REVEAL ─── -->
+  <!-- SCROLL REVEAL -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
