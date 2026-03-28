@@ -1,46 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartBot — Soporte de Conectividad Smart TV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-void: #050810;
-      --bg-deep: #080d1a;
-      --bg-card: #0d1527;
-      --bg-glass: rgba(13, 21, 39, 0.7);
+      --bg-void:     #050810;
+      --bg-deep:     #080d1a;
+      --bg-card:     #0d1527;
+      --bg-glass:    rgba(13, 21, 39, 0.7);
       --accent-cyan: #00d4ff;
       --accent-blue: #0066ff;
       --accent-glow: rgba(0, 212, 255, 0.15);
       --accent-line: rgba(0, 212, 255, 0.3);
-      --text-primary: #eef2ff;
+      --text-primary:   #eef2ff;
       --text-secondary: #7a8ab0;
-      --text-muted: #3d4f72;
-      --border: rgba(0, 212, 255, 0.12);
-      --border-hover: rgba(0, 212, 255, 0.4);
+      --text-muted:     #3d4f72;
+      --border:         rgba(0, 212, 255, 0.12);
+      --border-hover:   rgba(0, 212, 255, 0.4);
       --font-display: 'Syne', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-      --font-body: 'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+      --font-body:    'DM Sans', sans-serif;
     }
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
@@ -53,50 +42,34 @@
     /* ─── NOISE OVERLAY ─── */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
+      pointer-events: none; z-index: 0; opacity: 0.4;
     }
 
     /* ─── GRID BACKGROUND ─── */
     .grid-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
     }
 
     /* ─── RADIAL GLOW ─── */
     .radial-glow {
-      position: fixed;
-      top: -20vh;
-      left: 50%;
+      position: fixed; top: -20vh; left: 50%;
       transform: translateX(-50%);
-      width: 900px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(0, 102, 255, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0,102,255,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
     }
 
     /* ─── NAV ─── */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 6vw;
       height: 64px;
       background: rgba(5, 8, 16, 0.8);
@@ -105,20 +78,16 @@
     }
 
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
       font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.2rem;
+      font-weight: 800; font-size: 1.2rem;
       letter-spacing: -0.02em;
       color: var(--text-primary);
       text-decoration: none;
     }
 
     .logo-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background: var(--accent-cyan);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--accent-cyan);
@@ -126,30 +95,18 @@
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        box-shadow: 0 0 10px var(--accent-cyan);
-      }
-
-      50% {
-        opacity: 0.6;
-        box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px rgba(0, 212, 255, 0.3);
-      }
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--accent-cyan); }
+      50% { opacity: 0.6; box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px rgba(0,212,255,0.3); }
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
+      display: flex; align-items: center; gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 400;
+      font-size: 0.78rem; font-weight: 400;
       color: var(--text-secondary);
       text-decoration: none;
       letter-spacing: 0.05em;
@@ -157,62 +114,46 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--accent-cyan);
-    }
+    .nav-links a:hover { color: var(--accent-cyan); }
 
     .nav-cta {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       color: var(--accent-cyan) !important;
       border: 1px solid var(--accent-line);
-      padding: 6px 16px;
-      border-radius: 4px;
+      padding: 6px 16px; border-radius: 4px;
       transition: background 0.2s, box-shadow 0.2s !important;
     }
 
     .nav-cta:hover {
       background: var(--accent-glow) !important;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2) !important;
+      box-shadow: 0 0 20px rgba(0,212,255,0.2) !important;
     }
 
     /* ─── HERO ─── */
     .hero {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 6vw 80px;
     }
 
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: var(--accent-cyan);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400;
+      color: var(--accent-cyan); letter-spacing: 0.12em; text-transform: uppercase;
       border: 1px solid var(--accent-line);
-      padding: 6px 16px;
-      border-radius: 100px;
+      padding: 6px 16px; border-radius: 100px;
       background: var(--accent-glow);
       margin-bottom: 32px;
       animation: fadeUp 0.8s ease both;
     }
 
     .hero-tag-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--accent-cyan);
-      border-radius: 50%;
+      width: 5px; height: 5px;
+      background: var(--accent-cyan); border-radius: 50%;
       animation: pulse 2s ease infinite;
     }
 
@@ -229,15 +170,12 @@
 
     .hero-title span {
       color: transparent;
-      -webkit-text-stroke: 1.5px rgba(0, 212, 255, 0.5);
+      -webkit-text-stroke: 1.5px rgba(0,212,255,0.5);
     }
 
     .hero-subtitle-line {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: var(--accent-cyan);
-      letter-spacing: 0.2em;
+      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 300;
+      color: var(--accent-cyan); letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 28px;
       animation: fadeUp 0.8s 0.2s ease both;
@@ -245,74 +183,50 @@
 
     .hero-desc {
       max-width: 560px;
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.7;
+      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
       color: var(--text-secondary);
       margin-bottom: 48px;
       animation: fadeUp 0.8s 0.3s ease both;
     }
 
     .hero-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center;
       animation: fadeUp 0.8s 0.4s ease both;
     }
 
     .btn-primary {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
       color: var(--bg-void);
       background: var(--accent-cyan);
-      border: none;
-      padding: 14px 32px;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
+      border: none; padding: 14px 32px; border-radius: 4px;
+      cursor: pointer; text-decoration: none;
       transition: box-shadow 0.25s, transform 0.2s;
       display: inline-block;
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 30px rgba(0,212,255,0.5), 0 0 60px rgba(0,212,255,0.2);
       transform: translateY(-2px);
     }
 
     .btn-ghost {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 400;
+      letter-spacing: 0.05em; text-transform: uppercase;
       color: var(--text-secondary);
       background: transparent;
-      border: 1px solid var(--text-muted);
-      padding: 14px 32px;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
+      border: 1px solid var(--text-muted); padding: 14px 32px; border-radius: 4px;
+      cursor: pointer; text-decoration: none;
       transition: color 0.2s, border-color 0.2s;
       display: inline-block;
     }
 
-    .btn-ghost:hover {
-      color: var(--text-primary);
-      border-color: var(--text-secondary);
-    }
+    .btn-ghost:hover { color: var(--text-primary); border-color: var(--text-secondary); }
 
     /* ─── STATS BAR ─── */
     .stats-bar {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      gap: 0;
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: 0;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--bg-card);
@@ -320,72 +234,50 @@
     }
 
     .stat-item {
-      flex: 1;
-      max-width: 280px;
+      flex: 1; max-width: 280px;
       padding: 28px 32px;
       border-right: 1px solid var(--border);
       text-align: center;
       transition: background 0.3s;
     }
 
-    .stat-item:last-child {
-      border-right: none;
-    }
-
-    .stat-item:hover {
-      background: var(--accent-glow);
-    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: var(--accent-glow); }
 
     .stat-num {
       font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 800;
+      font-size: 2.4rem; font-weight: 800;
       letter-spacing: -0.04em;
       color: var(--accent-cyan);
     }
 
     .stat-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 4px;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-secondary); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-top: 4px;
     }
 
     /* ─── FEATURES ─── */
     .section {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       padding: 100px 6vw;
     }
 
     .section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent-cyan);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent-cyan); letter-spacing: 0.15em;
+      text-transform: uppercase; margin-bottom: 16px;
     }
 
     .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-      max-width: 600px;
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 16px; max-width: 600px;
     }
 
     .section-desc {
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin-bottom: 60px;
+      font-size: 1rem; font-weight: 300; line-height: 1.7;
+      color: var(--text-secondary); max-width: 480px; margin-bottom: 60px;
     }
 
     .features-grid {
@@ -407,92 +299,59 @@
 
     .feature-card::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+      opacity: 0; transition: opacity 0.3s;
     }
 
-    .feature-card:hover {
-      background: #101c35;
-    }
-
-    .feature-card:hover::before {
-      opacity: 1;
-    }
+    .feature-card:hover { background: #101c35; }
+    .feature-card:hover::before { opacity: 1; }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 40px; height: 40px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--accent-glow);
     }
 
-    .feature-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--accent-cyan);
-      fill: none;
-      stroke-width: 1.5;
-    }
+    .feature-icon svg { width: 20px; height: 20px; stroke: var(--accent-cyan); fill: none; stroke-width: 1.5; }
 
     .feature-name {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em;
     }
 
     .feature-desc {
-      font-size: 0.88rem;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      font-weight: 300;
+      font-size: 0.88rem; line-height: 1.65;
+      color: var(--text-secondary); font-weight: 300;
     }
 
     /* ─── BRANDS ─── */
     .brands-section {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       padding: 60px 6vw;
       text-align: center;
       border-top: 1px solid var(--border);
     }
 
     .brands-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-muted); letter-spacing: 0.15em;
+      text-transform: uppercase; margin-bottom: 28px;
     }
 
     .brands-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; align-items: center;
       gap: 12px;
     }
 
     .brand-tag {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-family: var(--font-mono); font-size: 0.8rem;
       color: var(--text-muted);
       border: 1px solid var(--border);
-      padding: 8px 20px;
-      border-radius: 4px;
+      padding: 8px 20px; border-radius: 4px;
       letter-spacing: 0.08em;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
       cursor: default;
@@ -506,8 +365,7 @@
 
     /* ─── CHATBOT SECTION ─── */
     .chat-section {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       padding: 100px 6vw;
       border-top: 1px solid var(--border);
     }
@@ -517,89 +375,57 @@
       grid-template-columns: 1fr 2fr;
       gap: 80px;
       align-items: start;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1200px; margin: 0 auto;
     }
 
-    .chat-info {
-      padding-top: 20px;
-    }
+    .chat-info { padding-top: 20px; }
 
     .chat-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: #00ff88;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: #00ff88; letter-spacing: 0.1em; text-transform: uppercase;
       margin-bottom: 28px;
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
-      background: #00ff88;
+      width: 6px; height: 6px; background: #00ff88;
       border-radius: 50%;
       box-shadow: 0 0 8px #00ff88;
       animation: pulse-green 2s ease infinite;
     }
 
     @keyframes pulse-green {
-
-      0%,
-      100% {
-        box-shadow: 0 0 8px #00ff88;
-      }
-
-      50% {
-        box-shadow: 0 0 16px #00ff88, 0 0 30px rgba(0, 255, 136, 0.3);
-      }
+      0%,100% { box-shadow: 0 0 8px #00ff88; }
+      50% { box-shadow: 0 0 16px #00ff88, 0 0 30px rgba(0,255,136,0.3); }
     }
 
     .chat-headline {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-family: var(--font-display); font-size: 2.4rem;
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
       margin-bottom: 16px;
     }
 
     .chat-headline em {
-      font-style: normal;
-      color: var(--accent-cyan);
+      font-style: normal; color: var(--accent-cyan);
     }
 
     .chat-subtext {
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 40px;
+      font-size: 0.95rem; font-weight: 300; line-height: 1.7;
+      color: var(--text-secondary); margin-bottom: 40px;
     }
 
     .chat-hints {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: flex; flex-direction: column; gap: 10px;
     }
 
     .hint-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+      display: flex; align-items: flex-start; gap: 12px;
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--text-muted); line-height: 1.5;
     }
 
     .hint-arrow {
-      color: var(--accent-cyan);
-      flex-shrink: 0;
-      margin-top: 1px;
+      color: var(--accent-cyan); flex-shrink: 0; margin-top: 1px;
     }
 
     /* ─── CHAT EMBED WRAPPER ─── */
@@ -610,265 +436,163 @@
       border-radius: 12px;
       overflow: hidden;
       background: var(--bg-card);
-      box-shadow: 0 0 60px rgba(0, 100, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 60px rgba(0, 100, 255, 0.1), 0 0 120px rgba(0,0,0,0.6);
     }
 
     .chat-embed-wrapper::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      z-index: 10;
+      position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 10;
       background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 30%, var(--accent-blue) 70%, transparent 100%);
     }
 
     .chat-embed-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 48px;
-      z-index: 5;
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 48px; z-index: 5;
       background: var(--bg-deep);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      gap: 8px;
+      display: flex; align-items: center; padding: 0 16px; gap: 8px;
     }
 
-    .embed-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .embed-dot.red {
-      background: #ff5f57;
-    }
-
-    .embed-dot.yellow {
-      background: #febc2e;
-    }
-
-    .embed-dot.green {
-      background: #28c840;
-    }
+    .embed-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .embed-dot.red   { background: #ff5f57; }
+    .embed-dot.yellow{ background: #febc2e; }
+    .embed-dot.green { background: #28c840; }
 
     .embed-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-left: auto;
-      letter-spacing: 0.1em;
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--text-muted); margin-left: auto; letter-spacing: 0.1em;
     }
 
     .chat-frame {
-      position: absolute;
-      top: 48px;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: absolute; top: 48px; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column;
     }
 
     #root {
       width: 100%;
-      height: 100%;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Fuerza al iframe/contenedor interno de Watson a ocupar todo el espacio */
+    #root > * {
+      width: 100% !important;
+      height: 100% !important;
     }
 
     /* ─── HOW IT WORKS ─── */
     .how-section {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       padding: 100px 6vw;
       border-top: 1px solid var(--border);
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1200px; margin: 0 auto;
     }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-top: 60px;
+      gap: 40px; margin-top: 60px;
     }
 
-    .step-item {
-      position: relative;
-    }
+    .step-item { position: relative; }
 
     .step-num {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      font-weight: 800;
-      color: var(--text-muted);
-      opacity: 0.3;
-      line-height: 1;
-      margin-bottom: 16px;
+      font-family: var(--font-display); font-size: 4rem;
+      font-weight: 800; color: var(--text-muted);
+      opacity: 0.3; line-height: 1; margin-bottom: 16px;
       letter-spacing: -0.05em;
     }
 
     .step-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display); font-size: 1.1rem;
+      font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;
     }
 
     .step-desc {
-      font-size: 0.875rem;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      font-weight: 300;
+      font-size: 0.875rem; line-height: 1.65;
+      color: var(--text-secondary); font-weight: 300;
     }
 
     .step-connector {
-      position: absolute;
-      top: 28px;
-      right: -20px;
-      width: 40px;
-      height: 1px;
+      position: absolute; top: 28px; right: -20px;
+      width: 40px; height: 1px;
       background: linear-gradient(90deg, var(--border), transparent);
     }
 
     /* ─── FOOTER ─── */
     footer {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       border-top: 1px solid var(--border);
       padding: 48px 6vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
     }
 
     .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 1rem; letter-spacing: -0.02em;
       color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
 
     .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-muted); letter-spacing: 0.05em;
     }
 
     .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
+      display: flex; gap: 24px; list-style: none;
     }
 
     .footer-links a {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.05em; text-transform: uppercase;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover {
-      color: var(--accent-cyan);
-    }
+    .footer-links a:hover { color: var(--accent-cyan); }
 
     .ibm-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--text-muted); letter-spacing: 0.08em;
     }
 
     .ibm-badge span {
-      font-weight: 700;
-      color: var(--accent-blue);
+      font-weight: 700; color: var(--accent-blue);
     }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.visible { opacity: 1; transform: none; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .chat-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .chat-embed-wrapper {
-        height: 520px;
-      }
-
-      .stat-item {
-        padding: 20px 16px;
-      }
-
-      .stat-num {
-        font-size: 1.8rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .step-connector {
-        display: none;
-      }
+      .chat-layout { grid-template-columns: 1fr; gap: 40px; }
+      .chat-embed-wrapper { height: 520px; }
+      .stat-item { padding: 20px 16px; }
+      .stat-num { font-size: 1.8rem; }
+      .nav-links { display: none; }
+      .step-connector { display: none; }
     }
 
     @media (max-width: 480px) {
-      .hero-title {
-        font-size: 3.2rem;
-      }
-
-      .stats-bar {
-        flex-direction: column;
-      }
-
-      .stat-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
+      .hero-title { font-size: 3.2rem; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
-
 <body>
 
   <div class="grid-bg"></div>
@@ -931,88 +655,56 @@
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-eyebrow">Capacidades</p>
       <h2 class="section-title">Todo lo que necesitas para reconectar tu TV</h2>
-      <p class="section-desc">Desde un simple reinicio hasta configuración DNS manual — SmartBot cubre cada escenario.
-      </p>
+      <p class="section-desc">Desde un simple reinicio hasta configuración DNS manual — SmartBot cubre cada escenario.</p>
 
       <div class="features-grid">
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-              <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-              <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-              <circle cx="12" cy="20" r="1" fill="currentColor" />
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
           </div>
           <div class="feature-name">Conectividad WiFi</div>
-          <div class="feature-desc">Diagnóstico de señal, contraseña, selección de banda 2.4GHz vs 5GHz, y
-            compatibilidad con tu router.</div>
+          <div class="feature-desc">Diagnóstico de señal, contraseña, selección de banda 2.4GHz vs 5GHz, y compatibilidad con tu router.</div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-              <line x1="12" y1="12" x2="12" y2="16" />
-              <line x1="10" y1="14" x2="14" y2="14" />
-            </svg>
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
           </div>
           <div class="feature-name">Conexión Ethernet</div>
-          <div class="feature-desc">Verificación de cable, configuración DHCP y asignación manual de IP cuando el cable
-            no da señal.</div>
+          <div class="feature-desc">Verificación de cable, configuración DHCP y asignación manual de IP cuando el cable no da señal.</div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 8v4l3 3" />
-            </svg>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <div class="feature-name">Apps de streaming</div>
-          <div class="feature-desc">Solución para Netflix, YouTube, Disney+, Prime Video y más cuando fallan aunque el
-            WiFi esté activo.</div>
+          <div class="feature-desc">Solución para Netflix, YouTube, Disney+, Prime Video y más cuando fallan aunque el WiFi esté activo.</div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5z" />
-              <path d="M2 17l10 5 10-5" />
-              <path d="M2 12l10 5 10-5" />
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <div class="feature-name">DNS & IP manual</div>
-          <div class="feature-desc">Configuración de DNS de Google (8.8.8.8) y Cloudflare (1.1.1.1) cuando hay errores
-            de resolución de nombres.</div>
+          <div class="feature-desc">Configuración de DNS de Google (8.8.8.8) y Cloudflare (1.1.1.1) cuando hay errores de resolución de nombres.</div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <polyline points="23 4 23 10 17 10" />
-              <polyline points="1 20 1 14 7 14" />
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-            </svg>
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           </div>
           <div class="feature-name">Actualización de firmware</div>
-          <div class="feature-desc">Guías específicas por marca para actualizar el software del TV y resolver
-            incompatibilidades de red.</div>
+          <div class="feature-desc">Guías específicas por marca para actualizar el software del TV y resolver incompatibilidades de red.</div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <div class="feature-name">Restauración de fábrica</div>
-          <div class="feature-desc">Último recurso guiado por marca con advertencia previa de pérdida de datos y
-            confirmación de intención.</div>
+          <div class="feature-desc">Último recurso guiado por marca con advertencia previa de pérdida de datos y confirmación de intención.</div>
         </div>
 
       </div>
@@ -1071,29 +763,10 @@
           <div class="embed-dot red"></div>
           <div class="embed-dot yellow"></div>
           <div class="embed-dot green"></div>
-          <span class="embed-label">SmartBot — ConectaTV · IBM Watson Orchestrate</span>
+          <span class="embed-label">SmartBot · IBM Watson Orchestrate</span>
         </div>
         <div class="chat-frame">
-          <div id="root">
-            <script>
-              window.wxOConfiguration = {
-                orchestrationID: "20260328-2035-2343-7054-0514016fe124_20260328-2036-4637-30d0-2b12e1ad24ca",
-                hostURL: "https://dl.watson-orchestrate.ibm.com",
-                rootElementID: "root",
-                chatOptions: {
-                  agentId: "80f08c96-d8f0-4b8c-9dc0-ab41fa653db8",
-                }
-              };
-              setTimeout(function () {
-                const script = document.createElement('script');
-                script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
-                script.addEventListener('load', function () {
-                  wxoLoader.init();
-                });
-                document.head.appendChild(script);
-              }, 0);                     
-            </script>
-          </div>
+          <div id="root"></div>
         </div>
       </div>
     </div>
@@ -1108,29 +781,25 @@
       <div class="step-item reveal">
         <div class="step-num">01</div>
         <div class="step-name">Describe el problema</div>
-        <div class="step-desc">Escribe lo que está pasando con tu TV en lenguaje natural. No necesitas usar términos
-          técnicos.</div>
+        <div class="step-desc">Escribe lo que está pasando con tu TV en lenguaje natural. No necesitas usar términos técnicos.</div>
         <div class="step-connector"></div>
       </div>
       <div class="step-item reveal">
         <div class="step-num">02</div>
         <div class="step-name">Confirma tu marca</div>
-        <div class="step-desc">El asistente identifica el fabricante de tu TV para entregar pasos exactos para tu
-          modelo.</div>
+        <div class="step-desc">El asistente identifica el fabricante de tu TV para entregar pasos exactos para tu modelo.</div>
         <div class="step-connector"></div>
       </div>
       <div class="step-item reveal">
         <div class="step-num">03</div>
         <div class="step-name">Diagnóstico guiado</div>
-        <div class="step-desc">Recibes instrucciones numeradas, una a la vez, comenzando por las causas más comunes.
-        </div>
+        <div class="step-desc">Recibes instrucciones numeradas, una a la vez, comenzando por las causas más comunes.</div>
         <div class="step-connector"></div>
       </div>
       <div class="step-item reveal">
         <div class="step-num">04</div>
         <div class="step-name">Resolución verificada</div>
-        <div class="step-desc">Si un paso no resuelve el problema, el asistente escala al siguiente nivel de
-          diagnóstico.</div>
+        <div class="step-desc">Si un paso no resuelve el problema, el asistente escala al siguiente nivel de diagnóstico.</div>
       </div>
     </div>
   </section>
@@ -1184,5 +853,4 @@
   </script>
 
 </body>
-
 </html>
