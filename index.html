@@ -60,7 +60,6 @@
       pointer-events: none; z-index: 0;
     }
 
-    /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -115,7 +114,6 @@
       box-shadow: 0 0 20px rgba(0,212,255,0.2) !important;
     }
 
-    /* ─── HERO ─── */
     .hero {
       position: relative; z-index: 1;
       min-height: 100vh;
@@ -195,7 +193,6 @@
 
     .btn-ghost:hover { color: var(--text-primary); border-color: var(--text-secondary); }
 
-    /* ─── STATS BAR ─── */
     .stats-bar {
       position: relative; z-index: 1;
       display: flex; justify-content: center;
@@ -223,10 +220,7 @@
       text-transform: uppercase; margin-top: 4px;
     }
 
-    /* ─── SECTIONS ─── */
-    .section {
-      position: relative; z-index: 1; padding: 100px 6vw;
-    }
+    .section { position: relative; z-index: 1; padding: 100px 6vw; }
 
     .section-eyebrow {
       font-family: var(--font-mono); font-size: 0.72rem;
@@ -245,7 +239,6 @@
       color: var(--text-secondary); max-width: 480px; margin-bottom: 60px;
     }
 
-    /* ─── FEATURES GRID ─── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -286,7 +279,6 @@
       font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary); font-weight: 300;
     }
 
-    /* ─── BRANDS ─── */
     .brands-section {
       position: relative; z-index: 1; padding: 60px 6vw;
       text-align: center; border-top: 1px solid var(--border);
@@ -315,7 +307,6 @@
       background: var(--accent-glow);
     }
 
-    /* ─── CHAT SECTION — full redesign for floating widget ─── */
     .chat-section {
       position: relative; z-index: 1;
       padding: 100px 6vw; border-top: 1px solid var(--border);
@@ -355,7 +346,6 @@
       color: var(--text-secondary); margin-bottom: 36px;
     }
 
-    /* The launch button that opens Watson's floating panel */
     .chat-launch-btn {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
@@ -372,6 +362,10 @@
 
     .chat-launch-btn svg { width: 18px; height: 18px; stroke: var(--bg-void); fill: none; stroke-width: 2; }
 
+    .chat-launch-btn:disabled {
+      opacity: 0.5; cursor: wait; transform: none;
+    }
+
     .chat-hints { display: flex; flex-direction: column; gap: 10px; }
 
     .hint-item {
@@ -382,7 +376,6 @@
 
     .hint-arrow { color: var(--accent-cyan); flex-shrink: 0; margin-top: 1px; }
 
-    /* Right side: visual terminal-style preview */
     .chat-preview {
       border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
       background: var(--bg-card);
@@ -414,11 +407,7 @@
 
     .preview-body { padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
 
-    /* Simulated chat bubbles as visual decoration */
-    .bubble {
-      display: flex; gap: 10px; align-items: flex-start;
-    }
-
+    .bubble { display: flex; gap: 10px; align-items: flex-start; }
     .bubble.bot { flex-direction: row; }
     .bubble.user { flex-direction: row-reverse; }
 
@@ -482,7 +471,6 @@
 
     .open-badge-dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 6px #00ff88; }
 
-    /* ─── HOW IT WORKS ─── */
     .how-section {
       position: relative; z-index: 1; padding: 100px 6vw;
       border-top: 1px solid var(--border);
@@ -516,7 +504,6 @@
       background: linear-gradient(90deg, var(--border), transparent);
     }
 
-    /* ─── FOOTER ─── */
     footer {
       position: relative; z-index: 1;
       border-top: 1px solid var(--border); padding: 48px 6vw;
@@ -553,7 +540,6 @@
 
     .ibm-badge span { font-weight: 700; color: var(--accent-blue); }
 
-    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -565,16 +551,6 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ─── WATSON FLOATING BUTTON OVERRIDE ─── */
-    /* Force Watson's floating button to match the site's cyan theme */
-    [class*="WatsonAssistantChatHost"] button,
-    .WACLauncher__ButtonContainer button,
-    #WACLauncher__Button {
-      background: var(--accent-cyan) !important;
-      box-shadow: 0 0 20px rgba(0,212,255,0.4) !important;
-    }
-
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .chat-inner { grid-template-columns: 1fr; gap: 48px; }
       .stat-item { padding: 20px 16px; }
@@ -595,7 +571,6 @@
   <div class="grid-bg"></div>
   <div class="radial-glow"></div>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
       <div class="logo-dot"></div>
@@ -609,7 +584,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
@@ -627,7 +601,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item reveal">
       <div class="stat-num">8</div>
@@ -647,7 +620,6 @@
     </div>
   </div>
 
-  <!-- FEATURES -->
   <section class="section" id="funciones">
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-eyebrow">Capacidades</p>
@@ -662,7 +634,6 @@
           <div class="feature-name">Conectividad WiFi</div>
           <div class="feature-desc">Diagnóstico de señal, contraseña, selección de banda 2.4GHz vs 5GHz y compatibilidad con tu router.</div>
         </div>
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
@@ -670,7 +641,6 @@
           <div class="feature-name">Conexión Ethernet</div>
           <div class="feature-desc">Verificación de cable, configuración DHCP y asignación manual de IP cuando el cable no da señal.</div>
         </div>
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -678,7 +648,6 @@
           <div class="feature-name">Apps de streaming</div>
           <div class="feature-desc">Solución para Netflix, YouTube, Disney+, Prime Video y más cuando fallan aunque el WiFi esté activo.</div>
         </div>
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -686,7 +655,6 @@
           <div class="feature-name">DNS & IP manual</div>
           <div class="feature-desc">Configuración de DNS Google (8.8.8.8) y Cloudflare (1.1.1.1) cuando hay errores de resolución de nombres.</div>
         </div>
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
@@ -694,7 +662,6 @@
           <div class="feature-name">Actualización de firmware</div>
           <div class="feature-desc">Guías específicas por marca para actualizar el software del TV y resolver incompatibilidades de red.</div>
         </div>
-
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -706,7 +673,6 @@
     </div>
   </section>
 
-  <!-- BRANDS -->
   <div class="brands-section reveal">
     <p class="brands-label">Marcas compatibles</p>
     <div class="brands-list">
@@ -721,11 +687,8 @@
     </div>
   </div>
 
-  <!-- CHATBOT SECTION -->
   <section class="chat-section" id="chatbot">
     <div class="chat-inner">
-
-      <!-- Left: info + CTA -->
       <div class="reveal">
         <div class="chat-status">
           <div class="status-dot"></div>
@@ -736,9 +699,9 @@
           Describe tu problema de conectividad. El asistente te entrega pasos numerados
           específicos para tu marca de TV, sin rodeos.
         </p>
-        <button class="chat-launch-btn" id="openChatBtn">
+        <button class="chat-launch-btn" id="openChatBtn" disabled>
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Abrir asistente
+          <span id="btnLabel">Cargando asistente…</span>
         </button>
         <div class="chat-hints">
           <div class="hint-item">
@@ -760,7 +723,6 @@
         </div>
       </div>
 
-      <!-- Right: decorative chat preview (visual only) -->
       <div class="chat-preview reveal">
         <div class="preview-header">
           <div class="p-dot r"></div>
@@ -801,11 +763,9 @@
           Haz clic en "Abrir asistente" para iniciar la sesión real
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section class="how-section" id="como-funciona">
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-eyebrow">Proceso</p>
@@ -838,14 +798,15 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
       <div class="logo-dot" style="width:6px;height:6px;"></div>
       SmartBot
     </div>
-    <p class="footer-copy">© 2026 SmartBot · Actividad 12 - Grupo 2 - TI3314-01-2026-2-INTELIGENCIA ARTIFICIAL</p>
-    <p class="footer-copy">Developed by: Oscar, Pedribel, Leandro & Samuel</p>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <p class="footer-copy">© 2026 SmartBot · Actividad 12 - Grupo 2 - TI3314-01-2026-2-INTELIGENCIA ARTIFICIAL</p>
+      <p class="footer-copy">Developed by: Oscar, Pedribel, Leandro &amp; Samuel</p>
+    </div>
     <ul class="footer-links">
       <li><a href="#funciones">Funciones</a></li>
       <li><a href="#chatbot">Asistente</a></li>
@@ -861,46 +822,132 @@
       hostURL: "https://dl.watson-orchestrate.ibm.com",
       rootElementID: "root",
       chatOptions: {
-        agentId: "80f08c96-d8f0-4b8c-9dc0-ab41fa653db8",
+          agentId: "80f08c96-d8f0-4b8c-9dc0-ab41fa653db8", 
+          agentEnvironmentId: "0b813048-64db-4d21-ba9b-6280a9db02aa",
       }
     };
 
+    // ─── WATSON LAUNCHER LOGIC ───────────────────────────────────────────────
+    //
+    // Watson Orchestrate's wxoLoader injects a fixed-position button into the DOM.
+    // We cannot call any public API to open it — IBM doesn't expose one for
+    // Orchestrate embeds. The only reliable method is:
+    //   1. Watch the DOM via MutationObserver for the button Watson injects.
+    //   2. Store a reference to it when found.
+    //   3. Enable our button and delegate clicks to Watson's button.
+    //
+    // Detection strategy: Watson's launcher button is always `position:fixed`.
+    // We exclude our own buttons and find the one Watson injects.
+    // ─────────────────────────────────────────────────────────────────────────
+
+    var watsonBtn = null;
+    var ourBtn    = document.getElementById('openChatBtn');
+    var ourLabel  = document.getElementById('btnLabel');
+
+    function isWatsonButton(el) {
+      if (!el || el.tagName !== 'BUTTON') return false;
+      if (el === ourBtn) return false;
+      // Watson's button is always fixed-positioned and injected after page load
+      var style = window.getComputedStyle(el);
+      return style.position === 'fixed';
+    }
+
+    function scanForWatsonButton() {
+      var all = document.querySelectorAll('button');
+      for (var i = 0; i < all.length; i++) {
+        if (isWatsonButton(all[i])) return all[i];
+      }
+      // Also check inside any shadow roots one level deep
+      var hosts = document.querySelectorAll('*');
+      for (var j = 0; j < hosts.length; j++) {
+        if (hosts[j].shadowRoot) {
+          var inner = hosts[j].shadowRoot.querySelectorAll('button');
+          for (var k = 0; k < inner.length; k++) {
+            if (isWatsonButton(inner[k])) return inner[k];
+          }
+        }
+      }
+      return null;
+    }
+
+    function activateOurButton() {
+      ourBtn.disabled = false;
+      ourLabel.textContent = 'Abrir asistente';
+    }
+
+    // Watch for Watson's button being added to the DOM
+    var observer = new MutationObserver(function() {
+      if (watsonBtn) return; // already found
+      var found = scanForWatsonButton();
+      if (found) {
+        watsonBtn = found;
+        activateOurButton();
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+
+    // Also poll as fallback (handles shadow DOM timing edge cases)
+    var pollInterval = setInterval(function() {
+      if (watsonBtn) { clearInterval(pollInterval); return; }
+      var found = scanForWatsonButton();
+      if (found) {
+        watsonBtn = found;
+        activateOurButton();
+        clearInterval(pollInterval);
+        observer.disconnect();
+      }
+    }, 400);
+
+    // Stop polling after 30s — if Watson hasn't loaded by then, it won't
+    setTimeout(function() {
+      clearInterval(pollInterval);
+      observer.disconnect();
+      if (!watsonBtn) {
+        // Watson failed to load — show fallback state
+        ourBtn.disabled = false;
+        ourLabel.textContent = 'Reintentar conexión';
+        ourBtn.addEventListener('click', function() {
+          window.location.reload();
+        }, { once: true });
+      }
+    }, 30000);
+
+    // Our button click — delegates to Watson's button
+    ourBtn.addEventListener('click', function() {
+      if (watsonBtn) {
+        watsonBtn.click();
+      }
+    });
+
+    // Load Watson's script
     setTimeout(function () {
       const script = document.createElement('script');
       script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
       script.addEventListener('load', function () {
-        wxoLoader.init();
+          wxoLoader.init();
       });
       document.head.appendChild(script);
-    }, 0);
+    }, 0);                     
 
-    // Button click: trigger Watson's floating chat to open
-    document.getElementById('openChatBtn').addEventListener('click', function () {
-      // Watson Orchestrate exposes a global to open the panel
-      // Try multiple known API entry points for different Watson embed versions
-      if (window.wxoLoader && typeof window.wxoLoader.openChat === 'function') {
-        window.wxoLoader.openChat();
-      } else if (window.WatsonAssistantChatInstance && typeof window.WatsonAssistantChatInstance.open === 'function') {
-        window.WatsonAssistantChatInstance.open();
-      } else {
-        // Fallback: find and click Watson's own floating button
-        const btn = document.querySelector('[class*="WACLauncher"] button, #WACLauncher__Button, [aria-label*="chat" i], [aria-label*="asistente" i]');
-        if (btn) btn.click();
-      }
-    });
   </script>
 
   <!-- SCROLL REVEAL -->
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, i * 80);
         }
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
   </script>
 
 </body>
