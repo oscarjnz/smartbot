@@ -1,1 +1,1 @@
-# smartchat
+# SmartBot
